@@ -1,34 +1,25 @@
-(function() {
+define(function (require, exports, module) {
+    var $ = require("jquery");
 
-    /**
-     * Supports configuration like this:
-     *
-     * {
-     * }
-     */
+    $.ajaxSetup({
+        dataFilter: function (data, type) {
+            if (type === 'json' && data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData.href && jsonData.href.startsWith('https://sandbox.api.kbb.com/vrs/data/makes')) {
+                    data = [];
+                    for (var i = 0; i < jsonData.items.length; i++) {
+                        data.push({
+                            value: jsonData.items[i].makeId,
+                            text: jsonData.items[i].makeName
+                        });
+                    }
+                }
 
-    var CKEDITOR = window.CKEDITOR;
+                data = JSON.stringify(data);
+            }
 
-   CKEDITOR.replace( 'brandawardtext',
-	{
-		on :
-		{
-			instanceReady : function( ev )
-			{
-				// Output paragraphs as <p>Text</p>.
-				this.dataProcessor.writer.setRules( 'p',
-					{
-						indent : false,
-						breakBeforeOpen : true,
-						breakAfterOpen : false,
-						breakBeforeClose : false,
-						breakAfterClose : true
-					});
-			}
-		}
-	});
+            return data;
+        }
+    });
 
-})();
-
-
-
+});
