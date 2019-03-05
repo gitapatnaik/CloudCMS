@@ -1,15 +1,14 @@
-Cloud CMS datasource interceptor
+Cloud CMS ckeditor-remove-tags
 ==================================================
 
-Tap into ajax json calls looking for a particular dataSource url and reshape the data to be
-dataSource compatible.
+Remove extra tags when data is entered in CKEditor CLoud
 
 ## Installation
 
 Deploy this module to your Cloud CMS Platform (Platform Settings > Modules)
 
-    ID: datasource-interceptor
-    TITLE: Custom DataSource Interceptor
+    ID: ckeditor-remove-tags
+    TITLE: Custom CKEDITOR Module
     Source Type: GitHub
-    Source URL: https://github.com/harrymoore/cloudcms-datasource-interceptor
+    Source URL:https://github.com/gitapatnaik/CloudCMS/edit/master/Modules/ckeditor-remove-tags
     Path: 
